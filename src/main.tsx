@@ -103,15 +103,7 @@ function App() {
         )}
         {current === 'footprints' && (
           <NavPage title="我的学习足迹" onBack={back}>
-            <PracticePage
-              sections={[
-                ['footprints_summary', 254],
-                ['footprints_journey', 356],
-                ['footprints_chat', 108],
-              ]}
-              wave={{ x: 190, y: 640, width: 90, height: 28, scale: 0.5 }}
-              background="#fffaf2"
-            />
+            <FootprintsPage />
           </NavPage>
         )}
         {current === 'classmateCircle' && (
@@ -484,6 +476,19 @@ function PracticePage({
       </div>
       <VoiceWave className="absolute-wave" style={scaleRect(wave, 375, wave.scale)} opacity={0.78} />
     </ImageCanvas>
+  );
+}
+
+function FootprintsPage() {
+  return (
+    <div className="image-page footprints" style={{ background: '#fffaf2' }}>
+      <img className="fp-img" src={asset('footprints_summary')} alt="" />
+      <img className="fp-img" src={asset('footprints_journey')} alt="" />
+      <div className="fp-chat">
+        <img className="fp-img" src={asset('footprints_chat')} alt="" />
+        <VoiceWave className="fp-wave" opacity={0.78} />
+      </div>
+    </div>
   );
 }
 
