@@ -128,7 +128,7 @@ function App() {
         )}
         {current === 'audioBook' && (
           <NavPage title="" onBack={back}>
-            <ImagePage name="audio_book_content" width={368} height={727} />
+            <ImagePage name="audio_book_content" width={750} height={1456} />
           </NavPage>
         )}
         {current === 'game' && (
@@ -445,7 +445,7 @@ function StudyRoomPage() {
             key={hotspot.id}
             className="hotspot"
             type="button"
-            style={scaleRect(hotspot, 375)}
+            style={scaleRect(hotspot, 375, 706)}
             onClick={() => setStatus(hotspot.label)}
             aria-label={hotspot.label}
           />
@@ -474,7 +474,7 @@ function PracticePage({
           <img src={asset(name)} alt="" style={{ height: `${(height / totalHeight) * 100}%` }} key={name} />
         ))}
       </div>
-      <VoiceWave className="absolute-wave" style={scaleRect(wave, 375, wave.scale)} opacity={0.78} />
+      <VoiceWave className="absolute-wave" style={scaleRect(wave, 375, totalHeight, wave.scale)} opacity={0.78} />
     </ImageCanvas>
   );
 }
@@ -499,7 +499,7 @@ function ClassmateCirclePage({ onPublish }: { onPublish: () => void }) {
         className="publish-button"
         type="button"
         onClick={onPublish}
-        style={scaleRect({ x: 277, y: 589, width: 60, height: 60 }, 345)}
+        style={scaleRect({ x: 277, y: 589, width: 60, height: 60 }, 345, 657)}
         aria-label="发布动态"
       >
         <img src={asset('classmate_circle_publish_button')} alt="" />
@@ -524,7 +524,7 @@ function ActivityPage() {
           key={hotspot.label}
           className="hotspot"
           type="button"
-          style={scaleRect(hotspot, 347)}
+          style={scaleRect(hotspot, 347, 697)}
           onClick={() => window.open('https://example.com/activity', '_blank', 'noopener,noreferrer')}
           aria-label={hotspot.label}
         />
@@ -547,7 +547,7 @@ function EntertainmentPage({ onNavigate }: { onNavigate: (page: Page) => void })
           key={hotspot.label}
           className="hotspot"
           type="button"
-          style={scaleRect(hotspot, 349)}
+          style={scaleRect(hotspot, 349, 651)}
           onClick={() => onNavigate(hotspot.page)}
           aria-label={hotspot.label}
         />
@@ -569,7 +569,7 @@ function ImageCanvas({
 }: React.PropsWithChildren<{ name?: string; width: number; height: number; background: string }>) {
   return (
     <div className="image-page" style={{ background }}>
-      <div className="image-canvas" style={{ '--design-width': width, '--design-height': height } as React.CSSProperties}>
+      <div className="image-canvas" style={{ aspectRatio: `${width} / ${height}` }}>
         {name && <img className="base-image" src={asset(name)} alt="" />}
         {children}
       </div>
@@ -592,13 +592,14 @@ function VoiceWave({ className = '', opacity = 0.24, style }: { className?: stri
 function scaleRect(
   rect: { x: number; y: number; width: number; height: number; scale?: number },
   designWidth: number,
+  designHeight: number,
   elementScale = 1,
 ): React.CSSProperties {
   return {
     left: `${(rect.x / designWidth) * 100}%`,
-    top: `calc(var(--canvas-width) * ${rect.y / designWidth})`,
+    top: `${(rect.y / designHeight) * 100}%`,
     width: `${(rect.width / designWidth) * 100}%`,
-    height: `calc(var(--canvas-width) * ${rect.height / designWidth})`,
+    height: `${(rect.height / designHeight) * 100}%`,
     transform: `scale(${elementScale})`,
     transformOrigin: 'center',
   };

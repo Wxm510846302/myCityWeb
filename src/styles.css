@@ -492,9 +492,7 @@ button:focus-visible {
 }
 
 .image-canvas {
-  --canvas-width: min(100%, calc(var(--design-width) * 1px));
-  width: var(--canvas-width);
-  height: calc(var(--canvas-width) * var(--design-height) / var(--design-width));
+  width: 100%;
   position: relative;
   margin: 0 auto;
 }
@@ -617,9 +615,8 @@ button:focus-visible {
 }
 
 .study-canvas {
-  --canvas-width: min(100%, 375px);
-  width: var(--canvas-width);
-  height: calc(var(--canvas-width) * 706 / 375);
+  width: 100%;
+  aspect-ratio: 375 / 706;
   margin: 0 auto;
   position: relative;
 }
@@ -634,17 +631,17 @@ button:focus-visible {
 }
 
 .study-header {
-  left: calc(var(--canvas-width) * 7 / 375);
+  left: 1.8667%;
   top: 0;
-  width: calc(var(--canvas-width) * 361 / 375);
-  height: calc(var(--canvas-width) * 213 / 375);
+  width: 96.2667%;
+  height: 30.1700%;
 }
 
 .study-content {
-  left: calc(var(--canvas-width) * 12 / 375);
-  top: calc(var(--canvas-width) * 221 / 375);
-  width: calc(var(--canvas-width) * 351 / 375);
-  height: calc(var(--canvas-width) * 485 / 375);
+  left: 3.2%;
+  top: 31.3031%;
+  width: 93.6%;
+  height: 68.6969%;
 }
 
 .sr-only {
