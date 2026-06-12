@@ -482,12 +482,12 @@ function PracticePage({
 function FootprintsPage() {
   return (
     <div className="image-page footprints" style={{ background: '#fffaf2' }}>
-      <img className="fp-img" src={asset('footprints_summary')} alt="" />
-      <img className="fp-img" src={asset('footprints_journey')} alt="" />
       <div className="fp-chat">
         <img className="fp-img" src={asset('footprints_chat')} alt="" />
         <VoiceWave className="fp-wave" opacity={0.78} />
       </div>
+      <img className="fp-img" src={asset('footprints_summary')} alt="" />
+      <img className="fp-img" src={asset('footprints_journey')} alt="" />
     </div>
   );
 }
