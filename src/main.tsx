@@ -255,7 +255,7 @@ function WelcomeChat({ onFinish }: { onFinish: () => void }) {
         {messages.map((message) => (
           <div className={`chat-row ${message.sender}`} key={message.id}>
             {message.sender === 'ai' && <img src={asset('mascot_huacai')} alt="" className="chat-avatar" />}
-            <p>{message.text}</p>
+            <p>{message.sender === 'ai' ? <TypewriterText text={message.text} /> : message.text}</p>
           </div>
         ))}
 
@@ -287,6 +287,33 @@ function WelcomeChat({ onFinish }: { onFinish: () => void }) {
         </button>
       </footer>
     </div>
+  );
+}
+
+function TypewriterText({ text, speed = 55 }: { text: string; speed?: number }) {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    setCount(0);
+    if (!text) return;
+    let current = 0;
+    const timer = window.setInterval(() => {
+      current += 1;
+      setCount(current);
+      if (current >= text.length) {
+        window.clearInterval(timer);
+      }
+    }, speed);
+    return () => window.clearInterval(timer);
+  }, [text, speed]);
+
+  const typing = count < text.length;
+
+  return (
+    <>
+      {text.slice(0, count)}
+      {typing && <span className="type-caret" aria-hidden>▍</span>}
+    </>
   );
 }
 

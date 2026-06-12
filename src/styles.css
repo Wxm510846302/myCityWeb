@@ -201,6 +201,20 @@ button:focus-visible {
   padding-inline: 18px;
 }
 
+.type-caret {
+  display: inline-block;
+  margin-left: 1px;
+  color: #ff7d45;
+  font-weight: 700;
+  transform: translateY(1px);
+  animation: type-caret-blink 0.7s steps(1) infinite;
+}
+
+@keyframes type-caret-blink {
+  0%, 50% { opacity: 1; }
+  50.01%, 100% { opacity: 0; }
+}
+
 .name-options {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
