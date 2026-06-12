@@ -405,27 +405,33 @@ function HomeTabBar() {
 }
 
 function PracticeHallPage({ onNavigate }: { onNavigate: (page: Page) => void }) {
-  const hotspots = [
-    { page: 'studyRoom' as Page, label: '进入学习房', x: 13, y: 119, width: 322, height: 107 },
-    { page: 'vocalPractice' as Page, label: '进入练歌房', x: 0, y: 237, width: 348, height: 115 },
-    { page: 'pianoPractice' as Page, label: '进入练琴房', x: 0, y: 383, width: 348, height: 115 },
-    { page: 'recitationPractice' as Page, label: '进入朗诵房', x: 0, y: 517, width: 348, height: 117 },
+  const rooms = [
+    { page: 'studyRoom' as Page, label: '进入学习房', x: 0, y: 0, width: 686, height: 256 },
+    { page: 'vocalPractice' as Page, label: '进入练歌房', x: 0, y: 256, width: 686, height: 256 },
+    { page: 'pianoPractice' as Page, label: '进入练琴房', x: 0, y: 512, width: 686, height: 256 },
+    { page: 'recitationPractice' as Page, label: '进入朗诵房', x: 0, y: 768, width: 686, height: 256 },
   ];
 
   return (
-    <ImageCanvas name="practice_hall_content" width={348} height={634} background="#fbfcf7">
-      <VoiceWave className="absolute-wave" style={scaleRect({ x: 74, y: 61, width: 130, height: 34 }, 348, 0.5)} opacity={0.62} />
-      {hotspots.map((hotspot) => (
-        <button
-          key={hotspot.label}
-          className="hotspot"
-          type="button"
-          style={scaleRect(hotspot, 348)}
-          onClick={() => onNavigate(hotspot.page)}
-          aria-label={hotspot.label}
-        />
-      ))}
-    </ImageCanvas>
+    <div className="image-page practice-hall" style={{ background: '#f3f7ef' }}>
+      <div className="image-canvas" style={{ '--design-width': 696, '--design-height': 202 } as React.CSSProperties}>
+        <img className="base-image" src={asset('practice_hall_top')} alt="" />
+        <VoiceWave className="absolute-wave" style={scaleRect({ x: 150, y: 132, width: 120, height: 34 }, 696, 0.55)} opacity={0.62} />
+      </div>
+      <div className="image-canvas" style={{ '--design-width': 686, '--design-height': 1024 } as React.CSSProperties}>
+        <img className="base-image" src={asset('practice_hall_content')} alt="" />
+        {rooms.map((room) => (
+          <button
+            key={room.label}
+            className="hotspot"
+            type="button"
+            style={scaleRect(room, 686)}
+            onClick={() => onNavigate(room.page)}
+            aria-label={room.label}
+          />
+        ))}
+      </div>
+    </div>
   );
 }
 

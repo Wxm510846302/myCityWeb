@@ -565,6 +565,14 @@ button:focus-visible {
   height: auto;
 }
 
+.practice-hall {
+  padding-bottom: 16px;
+}
+
+.practice-hall .image-canvas + .image-canvas {
+  margin-top: 12px;
+}
+
 .study-canvas {
   --canvas-width: min(100%, 375px);
   width: var(--canvas-width);
