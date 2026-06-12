@@ -188,7 +188,7 @@ button:focus-visible {
   white-space: pre-line;
   font-size: 24px;
   line-height: 1.32;
-  font-weight: 800;
+  font-weight: 600;
   color: #2d2d33;
   padding: 14px;
   background: white;
@@ -509,6 +509,8 @@ button:focus-visible {
   grid-template-columns: repeat(5, 1fr);
   align-items: center;
   background: #fff8f2;
+  z-index: 20;
+  box-shadow: 0 -6px 14px rgba(255, 248, 242, 0.9);
 }
 
 .home-tab-bar img {
