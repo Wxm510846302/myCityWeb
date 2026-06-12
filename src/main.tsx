@@ -406,26 +406,23 @@ function HomeTabBar() {
 
 function PracticeHallPage({ onNavigate }: { onNavigate: (page: Page) => void }) {
   const rooms = [
-    { page: 'studyRoom' as Page, label: '进入学习房', x: 0, y: 0, width: 686, height: 256 },
-    { page: 'vocalPractice' as Page, label: '进入练歌房', x: 0, y: 256, width: 686, height: 256 },
-    { page: 'pianoPractice' as Page, label: '进入练琴房', x: 0, y: 512, width: 686, height: 256 },
-    { page: 'recitationPractice' as Page, label: '进入朗诵房', x: 0, y: 768, width: 686, height: 256 },
+    { page: 'studyRoom' as Page, label: '进入学习房', top: 17, height: 23 },
+    { page: 'vocalPractice' as Page, label: '进入练歌房', top: 41, height: 22 },
+    { page: 'pianoPractice' as Page, label: '进入练琴房', top: 63, height: 18 },
+    { page: 'recitationPractice' as Page, label: '进入朗诵房', top: 81, height: 19 },
   ];
 
   return (
     <div className="image-page practice-hall" style={{ background: '#f3f7ef' }}>
-      <div className="image-canvas" style={{ '--design-width': 696, '--design-height': 202 } as React.CSSProperties}>
-        <img className="base-image" src={asset('practice_hall_top')} alt="" />
-        <VoiceWave className="absolute-wave" style={scaleRect({ x: 150, y: 132, width: 120, height: 34 }, 696, 0.55)} opacity={0.62} />
-      </div>
-      <div className="image-canvas" style={{ '--design-width': 686, '--design-height': 1024 } as React.CSSProperties}>
-        <img className="base-image" src={asset('practice_hall_content')} alt="" />
+      <div className="ph-page">
+        <img src={asset('practice_hall_content')} alt="" />
+        <VoiceWave className="ph-wave" opacity={0.62} />
         {rooms.map((room) => (
           <button
             key={room.label}
             className="hotspot"
             type="button"
-            style={scaleRect(room, 686)}
+            style={{ position: 'absolute', left: 0, width: '100%', top: `${room.top}%`, height: `${room.height}%` }}
             onClick={() => onNavigate(room.page)}
             aria-label={room.label}
           />
