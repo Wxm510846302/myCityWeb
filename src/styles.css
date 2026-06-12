@@ -113,6 +113,7 @@ button:focus-visible {
 .nav-content {
   height: calc(100% - 52px);
   overflow: hidden;
+  padding-top: 14px;
 }
 
 .welcome-page {
