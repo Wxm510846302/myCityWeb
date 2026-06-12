@@ -485,6 +485,11 @@ button:focus-visible {
   overflow-y: auto;
   overflow-x: hidden;
   padding: 0;
+  scrollbar-width: none;
+}
+
+.image-page::-webkit-scrollbar {
+  display: none;
 }
 
 .white-bg {
