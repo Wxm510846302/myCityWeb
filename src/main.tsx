@@ -356,13 +356,15 @@ function HomePage({ onNavigate, onReset }: { onNavigate: (page: Page) => void; o
         </section>
 
         <section className="feature-grid">
-          <button className="footprint-tile" type="button" onClick={() => onNavigate('footprints')}>
-            <img src={asset('home_tile_footprints')} alt="我的学习足迹" />
-          </button>
-          <FeatureCard title="活动馆" subtitle="发现精彩活动" tone="green" icon="⚑" onClick={() => onNavigate('activity')} />
-          <FeatureCard title="同学圈" subtitle="分享生活作品" tone="purple" icon="👥" onClick={() => onNavigate('classmateCircle')} />
-          <FeatureCard title="学练馆" subtitle="上课练习提升" tone="blue" icon="▰" onClick={() => onNavigate('practiceHall')} />
-          <FeatureCard title="娱乐馆" subtitle="听书游戏放松" tone="red" icon="◈" onClick={() => onNavigate('entertainment')} />
+          <div className="feature-row feature-row-2">
+            <FeatureTile image="feature_footprints" label="我的学习足迹" onClick={() => onNavigate('footprints')} />
+            <FeatureTile image="feature_activity" label="活动馆" onClick={() => onNavigate('activity')} />
+          </div>
+          <div className="feature-row feature-row-3">
+            <FeatureTile image="feature_circle" label="同学圈" onClick={() => onNavigate('classmateCircle')} />
+            <FeatureTile image="feature_practice" label="学练馆" onClick={() => onNavigate('practiceHall')} />
+            <FeatureTile image="feature_entertainment" label="娱乐馆" onClick={() => onNavigate('entertainment')} />
+          </div>
         </section>
       </main>
       <button className="reset-chat" type="button" onClick={onReset} aria-label="重新进入对话">↻</button>
@@ -384,12 +386,10 @@ function HomeTask({ image, title, subtitle, action, onClick }: { image: string; 
   );
 }
 
-function FeatureCard({ title, subtitle, tone, icon, onClick }: { title: string; subtitle: string; tone: string; icon: string; onClick: () => void }) {
+function FeatureTile({ image, label, onClick }: { image: string; label: string; onClick: () => void }) {
   return (
-    <button className={`feature-card ${tone}`} type="button" onClick={onClick}>
-      <span aria-hidden>{icon}</span>
-      <strong>{title}</strong>
-      <small>{subtitle}</small>
+    <button className="feature-tile" type="button" onClick={onClick} aria-label={label}>
+      <img src={asset(image)} alt={label} />
     </button>
   );
 }
